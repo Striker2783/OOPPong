@@ -38,7 +38,10 @@ def events():
     
 while True:
     events()
-    sprites.update()
+    
+    player_paddle.update()
+    enemy_paddle.update(ball)
+    ball.update(player_paddle, enemy_paddle)
     
     screen.fill(BLACK)
     sprites.draw(screen)

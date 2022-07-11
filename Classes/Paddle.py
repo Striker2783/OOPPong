@@ -13,9 +13,15 @@ class Paddle(pygame.sprite.Sprite):
 
 class PlayerPaddle(Paddle):
     def update(self):
-        pass
-
+        mouse_pos = pygame.mouse.get_pos()
+        if mouse_pos[1] < self.rect.centery:
+            self.rect.centery -= min(self.speed, self.rect.centery - mouse_pos[1])
+        elif mouse_pos[1] > self.rect.centery:
+            self.rect.centery += min(self.speed, mouse_pos[1] - self.rect.centery)
 
 class EnemyPaddle(Paddle):
-    def update(self):
-        pass
+    def update(self, ball):
+        if ball.rect.centery < self.rect.centery:
+            self.rect.centery -= min(self.speed, self.rect.centery - ball.rect.centery)
+        elif ball.rect.centery > self.rect.y:
+            self.rect.centery += min(self.speed, ball.rect.centery - self.rect.centery)
