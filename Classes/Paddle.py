@@ -6,13 +6,14 @@ WHITE = (255, 255, 255)
 class Paddle(pygame.sprite.Sprite):
     def __init__(self, color=WHITE, size=(10, 50), speed=10, position=("center", (0, 0))):
         super().__init__()
-        
+        self.position = position
         self.image = pygame.Surface(size)
         pygame.draw.rect(self.image, color, [0, 0, size[0], size[1]])
         self.rect = self.image.get_rect()
         self.rect.__setattr__(position[0], position[1])
         self.speed = speed
-
+    def reset(self):
+        self.rect.__setattr__(self.position[0], self.position[1])
 
 class PlayerPaddle(Paddle):
     def update(self):

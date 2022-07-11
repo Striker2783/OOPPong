@@ -8,7 +8,7 @@ WHITE = (255, 255, 255)
 class Ball(pygame.sprite.Sprite):
     def __init__(self, color=WHITE, size=(10, 10), speed=10, position=("center", (450, 300))):
         super().__init__()
-        
+        self.position = position
         self.image = pygame.Surface(size)
         pygame.draw.rect(self.image, color, [0, 0, size[0], size[1]])
         self.rect = self.image.get_rect()
@@ -35,3 +35,6 @@ class Ball(pygame.sprite.Sprite):
     def update(self, player, enemy):
         self.bounce(player, enemy)
         self.move()
+        
+    def reset(self):
+        self.rect.__setattr__(self.position[0], self.position[1])

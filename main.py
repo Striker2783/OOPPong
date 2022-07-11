@@ -1,3 +1,5 @@
+import time
+
 import pygame
 
 from Classes import Ball, Background, Paddle, Score
@@ -28,13 +30,19 @@ sprites.add(back_line)
 sprites.add(player_score, enemy_score)
 
 clock = pygame.time.Clock()
+scored = 0
 
 
 def score(scorer):
+    global scored
     if scorer == "player":
-        pass
+        player_score.score()
     elif scorer == "enemy":
-        pass
+        enemy_score.score()
+    scored = time.time()
+    ball.reset()
+    player_paddle.reset()
+    enemy_paddle.reset()
 
 
 def events():
@@ -48,6 +56,10 @@ def events():
 
 while True:
     events()
+    
+    if time.time() - scored <= 1:
+        continue
+    
     player_paddle.update()
     enemy_paddle.update(ball)
     ball.update(player_paddle, enemy_paddle)
