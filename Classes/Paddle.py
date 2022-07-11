@@ -1,13 +1,16 @@
 import pygame
 
+WHITE = (255, 255, 255)
+
 
 class Paddle(pygame.sprite.Sprite):
-    def __init__(self, color, sizex, sizey, speed):
+    def __init__(self, color=WHITE, sizex=10, sizey=50, speed=10, axis="center", position=(0, 0)):
         super().__init__()
         
         self.image = pygame.Surface((sizex, sizey))
         pygame.draw.rect(self.image, color, [0, 0, sizex, sizey])
         self.rect = self.image.get_rect()
+        self.rect.__setattr__(axis, position)
         self.speed = speed
 
 
@@ -18,6 +21,7 @@ class PlayerPaddle(Paddle):
             self.rect.centery -= min(self.speed, self.rect.centery - mouse_pos[1])
         elif mouse_pos[1] > self.rect.centery:
             self.rect.centery += min(self.speed, mouse_pos[1] - self.rect.centery)
+
 
 class EnemyPaddle(Paddle):
     def update(self, ball):
