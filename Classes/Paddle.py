@@ -6,7 +6,7 @@ class Paddle(pygame.sprite.Sprite):
         super().__init__()
         
         self.image = pygame.Surface((sizex, sizey))
-        pygame.draw.rect(self.image, color, [10, 300, sizex, sizey])
+        pygame.draw.rect(self.image, color, [0, 0, sizex, sizey])
         self.rect = self.image.get_rect()
         self.speed = speed
 
