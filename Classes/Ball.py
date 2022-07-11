@@ -6,7 +6,7 @@ WHITE = (255, 255, 255)
 
 
 class Ball(pygame.sprite.Sprite):
-    def __init__(self, color=WHITE, size=[10, 10], speed=10, axis="center", position=(450, 300)):
+    def __init__(self, color=WHITE, size=(10, 10), speed=10, axis="center", position=(450, 300)):
         super().__init__()
         
         self.image = pygame.Surface(size)

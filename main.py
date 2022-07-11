@@ -13,7 +13,7 @@ pygame.display.set_caption("Pong")
 player_paddle = Paddle.PlayerPaddle(axis="midleft", position=(10, 300))
 enemy_paddle = Paddle.EnemyPaddle(speed=8, axis="midright", position=(890, 300))
 ball = Ball.Ball()
-back_line = Background.Background(size=[5, 600], axis="center", position=(450, 300))
+back_line = Background.Background(size=(5, 600), axis="center", position=(450, 300))
 back_line.image.set_alpha(50)
 
 

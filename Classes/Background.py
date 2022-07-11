@@ -4,7 +4,7 @@ WHITE = (255, 255, 255)
 
 
 class Background(pygame.sprite.Sprite):
-    def __init__(self, color=WHITE, size=[10, 10], axis="center", position=(0, 0)):
+    def __init__(self, color=WHITE, size=(10, 10), axis="center", position=(0, 0)):
         super().__init__()
         
         self.image = pygame.Surface(size)
