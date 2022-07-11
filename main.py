@@ -1,4 +1,5 @@
 import pygame
+
 from Classes import Ball, Background, Paddle
 
 WHITE = (255, 255, 255)
@@ -28,6 +29,7 @@ sprites.add(back_line)
 
 clock = pygame.time.Clock()
 
+
 def events():
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
@@ -35,7 +37,8 @@ def events():
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_ESCAPE:
                 pygame.quit()
-    
+
+
 while True:
     events()
     
